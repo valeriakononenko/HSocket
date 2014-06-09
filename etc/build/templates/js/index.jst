@@ -1,3 +1,15 @@
 
 
 var net = require('net');
+var ds = require('node-ds');
+
+
+var package = require('../package.json');
+console.info(' [MODULE]: ' + package.name + '@' + package.version);
+
+
+%%make -s index.js-compile%%
+
+
+module.exports = hsocket;
+
