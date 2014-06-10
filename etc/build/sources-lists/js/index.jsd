@@ -7,7 +7,6 @@ hsocket/modify-operation-type.js
 
 hsocket/constraints/constraints.js
 
-hsocket/cursor.js
 hsocket/packet-handler.js
 hsocket/connection.js
 hsocket/index.js
