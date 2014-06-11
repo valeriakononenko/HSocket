@@ -8,10 +8,13 @@ var client = new hsocket.Client(9998, 9999);
 var index = new hsocket.Index('test', 'hsocket', ['time']);
 console.log('id:', index.getId());
 
-client.openIndex(index, function(result) {
-  console.log('RESULT:', result);
+client.openIndex(index, function() {
+  console.log('END', 1);
   client.insert([13], function() {
-    console.log('END');
-
-  }, console.error);
-}, console.error);
+    console.log('END', 2);
+  }, function(error, code) {
+    console.log('INSERT ERROR:', code, error);
+  });
+}, function(error, code) {
+  console.log('INDEX ERROR:', code, error);
+});
