@@ -3,18 +3,18 @@
 var hsocket = require('../bin/index.js');
 
 var client = new hsocket.Client(9998, 9999);
-//var id = Math.floor(Math.random()*100 + 1);
-//var id = 2;
-var index = new hsocket.Index('test', 'hsocket', ['time']);
+var index = new hsocket.Index('test', 'hs', ['id', 'c1', 'c2']);
+index.setId(19);
 console.log('id:', index.getId());
 
 client.openIndex(index, function() {
-  console.log('END', 1);
-  client.insert([13], function() {
-    console.log('END', 2);
+  console.log('INDEX OK');
+  client.insert([23, 1, 1], function() {
+    console.log('INSERT 1 OK');
   }, function(error, code) {
-    console.log('INSERT ERROR:', code, error);
+    console.log('INSERT 1 ERROR:', code, error);
   });
 }, function(error, code) {
   console.log('INDEX ERROR:', code, error);
 });
+
