@@ -4,7 +4,7 @@ hsocket/hsocket.js
 hsocket/filter-type.js
 hsocket/operation-type.js
 hsocket/modify-operation-type.js
-hsocket/request-type.js
+hsocket/response-type.js
 
 hsocket/constraints/constraints.js
 
