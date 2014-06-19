@@ -2,7 +2,7 @@
 
 var hsocket = require('../bin/index.js');
 
-var client = new hsocket.Client(9999);
+var client = new hsocket.Client(9998, 9999);
 var index = new hsocket.Index('test', 't1', ['id', 'c0', 'c1'], 'col0');
 console.log('id:', index.getId());
 

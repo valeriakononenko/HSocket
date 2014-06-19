@@ -10,5 +10,9 @@ hsocket/cursor.js
 hsocket/packet-handler.js
 hsocket/connection.js
 hsocket/index.js
+
+hsocket/i-channel.js
+hsocket/read-channel.js
+hsocket/write-channel.js
 hsocket/client.js
 

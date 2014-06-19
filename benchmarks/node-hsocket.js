@@ -1,5 +1,7 @@
 
 
+// CREATE TABLE node_hsocket(id INT PRIMARY KEY, time DECIMAL, KEY time (time));
+
 var hsocket = require('../bin');
 
 var count = 0;
@@ -13,11 +15,12 @@ var t = Date.now();
 var mem = 0;
 
 
-var client = new hsocket.Client(6379);
-var index = new hsocket.Index('test', 't1', ['id', 'c0', 'c1'], 'col0');
+var client = new hsocket.Client(9998, 9999);
+var index = new hsocket.Index('test', 'node_hsocket', ['id', 'time'], 'time');
 
 
-function cancel() {
+function cancel(error, code) {
+  console.log(error, code);
   e += 1;
   complete();
 }
@@ -25,7 +28,6 @@ function cancel() {
 
 function complete() {
   mem += process.memoryUsage().heapUsed/1024/1024;
-
   if ((r += 1) === count) {
     console.log('[NODE-HSOCKET] | R:', r, ' | E:', e, ' | T:',
         Date.now() - t, ' | M:', (Math.round(mem/r*10)/10));
@@ -34,15 +36,9 @@ function complete() {
 }
 
 
-function execInsert() {
-  client.insert([id, id + 1, id - 1], complete, cancel);
+function exec() {
+  client.insert([id, Date.now() - t], complete, cancel);
   id += 1;
-}
-
-
-function execFind() {
-  client.find(hsocket.OperationType.EQUALS, 2, complete(), cancel(),
-      new hsocket.LIMIT(r, 0));
 }
 
 
@@ -58,12 +54,11 @@ function run() {
   }
 
   for (var i = 0; i < count; i += 1) {
-    execInsert();
-//    execFind();
+    exec();
   }
 }
 
 
 client.openIndex(index, run, function(error, code) {
-  console.log('open_index error:', code, error)
+  console.log('open_index error:', code, error);
 });
