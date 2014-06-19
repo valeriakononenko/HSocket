@@ -19,8 +19,7 @@ var client = new hsocket.Client(9998, 9999);
 var index = new hsocket.Index('test', 'node_hsocket', ['id', 'time'], 'time');
 
 
-function cancel(error, code) {
-  console.log(error, code);
+function cancel() {
   e += 1;
   complete();
 }
