@@ -1,5 +1,11 @@
+
 *.iml
-*.log
 .project
 .idea/
+
+*.log
+
 node_modules/
+
+bin/
+externs/
