@@ -10,9 +10,9 @@ client.openIndex(index, function() {
   console.log('INDEX OK');
   client.insert([8, 8, 6], function(result) {
     console.log('INSERT OK', result);
-    client.find(hsocket.OperationType.EQUALS, 2, function(result) {
+    client.find(hsocket.protocol.Op.EQUALS, 2, function(result) {
       console.log('FIND OK', result);
-      client.delete(hsocket.OperationType.EQUALS, 2, function(result) {
+      client.delete(hsocket.protocol.Op.EQUALS, 2, function(result) {
         console.log('DELETE OK', result);
       }, function(error, code) {
         console.log('DELETE ERROR:', error, code);

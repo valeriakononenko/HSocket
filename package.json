@@ -2,11 +2,16 @@
   "name": "node-hsocket",
   "main": "bin/index.js",
   "version": "0.0.0",
-  "dependencies": {
-    "node-ds": "0.2.30"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/divergence082/Node-HSocket.git"
+  },
+  "devDependencies": {
+    "del": "1.1.1",
+    "gulp": "3.8.11",
+    "gulp-gjslint": "0.1.4",
+    "gulp-externs": "0.0.8",
+    "gulp-closure-compiler": "0.2.16",
+    "gulp-file-include": "0.8.0"
   }
 }
